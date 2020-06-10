@@ -18,13 +18,6 @@ pipelines:
               env2: changed2
             - key_1: value1
               key_2: value2
-          runtimes:
-            - type: image
-              image:
-                custom:
-                  name: shippabledocker/jfreq
-                  tag: latest
-                  registry: i_docker
         execution:
           onExecute:
             - echo "I am on matrix step"
