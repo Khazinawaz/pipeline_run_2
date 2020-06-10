@@ -1,31 +1,29 @@
 pipelines:
-  - name: Pipeline_2
-    steps:
-      - name: matrix_2
-        type: Matrix
-        stepMode: Bash
-        matrix:
-          environmentVariables:
-            - env1: one
-              env2: two
-              env3: three
-            - env1: changed1
-              env2: changed2
-            - key_1: value1
-              key_2: value2
-          runtimes:
-            - type: image
-              image:
-                auto:
-                  language: java
-                  versions:
-                    - 13.0
-            - type: image
-              image:
-                auto:
-                  language: node
-                  versions:
-                    - 8.17.0
-        execution:
-          onExecute:
-            - echo "I am on matrix step"
+  configuration:
+  environmentVariables:
+    readOnly:
+      ENV1: value1
+      ENV2: value2
+  runtime:
+    type: image
+    image:
+      custom:
+        name: shippabledocker/jfreq
+        tag: latest
+        registry: i_docker
+  steps:
+    - name: matrix_2
+      type: Matrix
+      stepMode: Bash
+      matrix:
+        environmentVariables:
+          - env1: one
+            env2: two
+            env3: three
+          - env1: changed1
+            env2: changed2
+          - key_1: value1
+            key_2: value2
+      execution:
+        onExecute:
+          - echo "I am on matrix step"
