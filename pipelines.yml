@@ -31,6 +31,12 @@ pipelines:
                   name: shippabledocker/sample-node
                   tag: latest
                   registry: i_docker
+            - type: image
+              image:
+                auto:
+                  language: node
+                  versions:
+                    - 8.17.0
         execution:
           onExecute:
             - echo "I am on matrix step"
