@@ -11,10 +11,10 @@ pipelines:
         execution:
           onStart:
             - echo "something working" >> file_1
-            - add_pipeline_files test file_1
+            - add_pipeline_files file_1 test
           onExecute:
             - mkdir -p testing
-            - restore_pipeline_files file_1 ./testing/.
+            - restore_pipeline_files test ./testing/.
             - ls -l ./testing/
 
       - name: matrix_2
