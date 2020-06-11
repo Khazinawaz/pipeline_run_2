@@ -54,3 +54,6 @@ pipelines:
         execution:
           onExecute:
             - echo "I am on matrix step"
+            - mkdir -p testing
+            - restore_pipeline_files test ./testing/.
+            - ls -l ./testing/
