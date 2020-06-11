@@ -6,6 +6,17 @@ pipelines:
           ENV1: value1
           ENV2: value2
     steps:
+      - name: Simple_Bash
+        type: Bash
+        execution:
+          onStart:
+            - cat "something working" >> file_1
+            - add_pipeline_files test file_1
+          onExecute:
+            - mkdir -p testing
+            - restore_pipeline_files file_1 ./testing/.
+            - ls -l ./testing/
+
       - name: matrix_2
         type: Matrix
         stepMode: Bash
