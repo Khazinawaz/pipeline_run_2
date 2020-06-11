@@ -50,7 +50,7 @@ pipelines:
         configuration:
           inputSteps:
             - name: Simple_Bash
-        matrix:
+        stepletMultipliers:
           environmentVariables:
             - env1: one
               env2: two
