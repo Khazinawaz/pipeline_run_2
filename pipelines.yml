@@ -20,6 +20,9 @@ pipelines:
       - name: matrix_2
         type: Matrix
         stepMode: Bash
+        configuration:
+          inputSteps:
+            - name: Simple_Bash
         matrix:
           environmentVariables:
             - env1: one
