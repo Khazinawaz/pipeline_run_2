@@ -10,7 +10,7 @@ pipelines:
         type: Bash
         execution:
           onStart:
-            - cat "something working" >> file_1
+            - echo "something working" >> file_1
             - add_pipeline_files test file_1
           onExecute:
             - mkdir -p testing
