@@ -10,11 +10,17 @@ pipelines:
         type: Bash
         execution:
           onStart:
-            - echo "something working" >> file_1
-            - add_pipeline_files file_1 test
+            - echo "pipelines state working" >> ${steplet_id}_pipelines_files
+            - add_pipeline_files ${steplet_id}_pipelines_files test_pipelines_files
+            - echo "add_cache_files working" >> ${steplet_id}_cache_file
+            - add_cache_files ${steplet_id}_cache_file test_cache_files
+            - echo "add_run_files working" >> ${steplet_id}_run_file
+            - add_run_files ${steplet_id}_run_file test_run_files
           onExecute:
             - mkdir -p testing
-            - restore_pipeline_files test ./testing/.
+            - restore_pipeline_files test_pipelines_files ./testing/.
+            - restore_cache_files test_cache_files ./testing/.
+            - restore_run_files test_run_files ./testing/.
             - ls -l ./testing/
 
       - name: matrix_2
@@ -55,5 +61,7 @@ pipelines:
           onExecute:
             - echo "I am on matrix step"
             - mkdir -p testing
-            - restore_pipeline_files test ./testing/.
+            - restore_pipeline_files test_pipelines_files ./testing/.
+            - restore_cache_files test_cache_files ./testing/.
+            - restore_run_files test_run_files ./testing/.
             - ls -l ./testing/
