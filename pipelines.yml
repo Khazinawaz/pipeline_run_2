@@ -84,3 +84,16 @@ pipelines:
             - restore_cache_files test_cache_files ./testing/.
             - restore_run_files test_run_files ./testing/.
             - ls -l ./testing/
+        exclude:
+          - environmentVariables:
+              env1: one
+              env2: two
+              env3: three
+            runtime:
+              type: image
+              image:
+                auto:
+                  language: node
+                  versions:
+                    - 8.17.0
+              
