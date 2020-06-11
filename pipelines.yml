@@ -27,7 +27,7 @@ pipelines:
             - echo "add_cache_files working" >> ./cache_files_dir/${steplet_id}_cache_file
             - add_cache_files cache_files_dir cache_files_dir
 
-            - echo "add_run_files working" >> ./run_file_dir/${steplet_id}_run_file
+            - echo "add_run_files working" >> ./run_files_dir/${steplet_id}_run_file
             - add_run_files run_files_dir run_files_dir
 
           onExecute:
@@ -42,7 +42,7 @@ pipelines:
             - restore_cache_files cache_files_dir ./temp1/.
             - restore_run_files run_files_dir ./temp1/.
             - ls -l ./temp1/. 
-            
+
 
       - name: matrix_2
         type: Matrix
